@@ -12,3 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+let perfil = document.getElementById("perfil");
+
+
+ perfil.innerHTML = localStorage.getItem("Usuario")
+
+

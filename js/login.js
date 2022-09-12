@@ -19,6 +19,9 @@ if (password.value == ""){
     showAlertpassword();
 }
 if(email.value != "" && password.value !="" ) {
+    localStorage.setItem("Usuario",email.value)
     window.location.href = "index.html";
 }
 })
+
+
