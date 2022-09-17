@@ -1,4 +1,7 @@
-const Autos="https://japceibal.github.io/emercado-api/cats_products/"+localStorage.getItem("catID")+".json";
+ function setCatID(id) {
+    localStorage.setItem("Items", id);
+    window.location = "product-info.html"
+}  
 
 const ORDER_ASC_BY_NAME = "ascendete";
 const ORDER_DESC_BY_NAME = "descendente";
@@ -37,10 +40,6 @@ function sortCategories(criteria, array){
     return result;
 }
 
-function setCatID(id) {
-    localStorage.setItem("catID", id);
-    window.location = "products.html"
-}
 
 function showCategoriesList(){
 
@@ -139,4 +138,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
-

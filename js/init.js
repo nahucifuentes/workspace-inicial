@@ -7,6 +7,11 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+const Autos = "https://japceibal.github.io/emercado-api/cats_products/"+localStorage.getItem("catID")+".json";
+const Products = "https://japceibal.github.io/emercado-api/products/"+localStorage.getItem("Items")+".json";
+const ProductComment = "https://japceibal.github.io/emercado-api/products_comments/"+localStorage.getItem("Items")+".json"
+
+console.log()
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -39,3 +44,4 @@ let getJSONData = function(url){
         return result;
     });
 }
+
