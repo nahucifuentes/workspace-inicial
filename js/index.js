@@ -19,3 +19,16 @@ let perfil = document.getElementById("perfil");
  perfil.innerHTML = localStorage.getItem("Usuario")
 
 
+/*  Cerrar Sesion */
+
+ var BorrarDatos = document.getElementById("CloseSession");
+
+ BorrarDatos.addEventListener("click",function(){
+    window.localStorage.clear("Usuario");
+     
+ })
+
+/*  CerrarSesion.addEventListener('click',function(e){
+    localStorage.removeItem("Usuario")
+});
+ */

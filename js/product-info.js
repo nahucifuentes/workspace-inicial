@@ -2,13 +2,15 @@ let currentCommentsArray = [];
 let currentProductsArray = [];
 let estrellaCompleta = `<i class="fa fa-star checked"></i> `;
 let estrellaIncompleta =  `<i class="fa fa-star"></i>`;
+let currentProductoRelacionadosArray = []
 
+/* Productos */
 
 function MostrasProductos(){
     let Datos = currentProductsArray;
     let htmlContentToAppend = "";
     htmlContentToAppend += `
-    <div ${Datos.id} class="">
+    <div ${Datos.id}>
     <div class="drow">
     <div class = "d-flex justify-content-center ">
     <h1><strong>${Datos.name}</strong> </h1>
@@ -66,6 +68,7 @@ getJSONData(Products).then(function(resultObj){
           let Comentarios = currentCommentsArray[i];
           
  let star = "";
+
  for( let i = 0 ; i < 5; i++){
    if( i < Comentarios.score ){ 
    star += estrellaCompleta;
@@ -73,7 +76,6 @@ getJSONData(Products).then(function(resultObj){
 star += estrellaIncompleta;
    }
 }
-
       htmlContentToComment +=
         `<div ${Comentarios.id} class="list-group-item-action cursor-active">
         <div class="drow">
@@ -102,47 +104,49 @@ star += estrellaIncompleta;
                 }
             })});    
  
+ 
+
+
+           /*  Productos Relacionados */
 
 
 
+           function MostrarProductosRelacionados(){ 
+            let htmlContentToComment= "";
 
+          for(let i = 0; i < currentProductoRelacionadosArray.relatedProducts.length; i++){
+              let Relacionados = currentProductoRelacionadosArray.relatedProducts[i];  
 
-
-
-
-
-
-
-
-
-
-
-        /*     `<div ${Comentarios.id} class="list-group-item-action cursor-active">
+            htmlContentToComment +=
+            `
+            <div onclick="setCatID(${Relacionados.id})" class ="col-2">
             <div class="drow">
-                <div class="">
-                <div class "d-flex justify-content-start">
-                <h5><strong>${Comentarios.user}</strong></h5>
-                <p>${Comentarios.description}.</p>
-                </div>
-                <div class "d-flex justify-content-start">
-                <h5><strong>${Comentarios.dateTime}- ${star}</strong></h5>
-                </div>
+            <div class = "d-flex justify-content-center ">
+            <div class="">
+            <div class="d-flex flex-row list-group-item-action cursor-active">
+            <img src="${Relacionados.image}" class="img-thumbnail">
+            </div>
+            <div class = "d-flex justify-content-center ">
+            <h6><strong>${Relacionados.name}</strong> </h6>
+            </div>
+            </div>
+            </div>
         </div>
-        `
- */
+        </div>
+                            `
+          }
+          document.getElementById("ProductRelac").innerHTML =  htmlContentToComment;  
+        }
+      
+             document.addEventListener("DOMContentLoaded", function(e){
+                  getJSONData(Products).then(function(resultObj){
+                      if (resultObj.status === "ok"){
+                        currentProductoRelacionadosArray = resultObj.data
+                          MostrarProductosRelacionados();
+                      }
+                  })});    
 
-
-      /*       <div class="col">
-            <div class="d-flex w-100 justify-content-between">
-            <h4 class="mb-1">${Datos.name}  - ${Datos.currency} ${Datos.cost}</h4>
-            <small class="text-muted">${Datos.soldCount} artículos</small>
-            </div>
-            <p class="mb-1">${Datos.description}</p>
-            </div>
-            </div> */
-
-/*             <div class="d-flex w-100 justify-content-between">
-            <h4 class="mb-1">${Comentarios.user}  ${Comentarios.score} </h4>
-            <p>${Comentarios.description}</p>
-            <small class="text-muted">${Comentarios.dateTime} artículos</small>
-</div> */
+               function setCatID(id) {
+                    localStorage.setItem("Items", id);
+                    window.location = "product-info.html"
+                 }  

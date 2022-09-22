@@ -1,7 +1,3 @@
- function setCatID(id) {
-    localStorage.setItem("Items", id);
-    window.location = "product-info.html"
-}  
 
 const ORDER_ASC_BY_NAME = "ascendete";
 const ORDER_DESC_BY_NAME = "descendente";
@@ -30,15 +26,19 @@ function sortCategories(criteria, array){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
-
+            
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
             return 0;
         });
     }
-
     return result;
 }
+
+function setCatID(id) {
+   localStorage.setItem("Items", id);
+   window.location = "product-info.html"
+}  
 
 
 function showCategoriesList(){
