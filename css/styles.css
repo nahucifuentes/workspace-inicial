@@ -188,3 +188,14 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+#carouselExampleCaptions{
+width: 70%;
+height:70%;
+}
+
+/* .descripcio{
+border-style: #fff;
+  color:black ;
+}  */
