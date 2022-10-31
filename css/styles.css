@@ -32,7 +32,7 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
+  background-color: #53c0fb;
   background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
@@ -195,7 +195,11 @@ width: 70%;
 height:70%;
 }
 
-/* .descripcio{
-border-style: #fff;
-  color:black ;
-}  */
+
+/* Prfil */
+
+
+body {
+  background: #fbfbfb;
+}
+

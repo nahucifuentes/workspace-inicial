@@ -47,7 +47,10 @@
     </div>
   </nav>
   <main>
+
+
     <div class="container">
+
       <div class="row-3">
       <div class=" d-flex  justify-content-center">
         <h2><strong>Carrito de compras</strong></h2>
@@ -63,55 +66,190 @@
      <div id="Carrito"></div>
      <br>
       <br>
+
+<!-- tipo de envio -->
+<form class="needs-validation" id="formulario" novalidate>
      <div id="envios">
       <h5>Tipo de Envío</h5>
-      <div></div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    </div> 
+      
+        <input onclick="premiumm()" class="form-check-input" type="radio" id="premium" name="flexRadioDefault" id="flexRadioDefault1" value="15" required checked>
         <label class="form-check-label" for="flexRadioDefault1">
           Premium 2 a 5 días (15%)
         </label>
-      </div>
+  
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <input onclick="expres()" class="form-check-input" id="express" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="7" required >
         <label class="form-check-label" for="flexRadioDefault2">
           Express 5 a 8 días (7%)
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <input onclick="standard()" class="form-check-input" id="standar" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="5" required >
         <label class="form-check-label" for="flexRadioDefault2">
           Standard 12 a 15 días (5%)
         </label>
       </div>
       <br>
-      <h5>Direccion de Envío</h5>
-      <div class="col-md-6">
-      <div>
-        <div class="mb-3 ">
-          Calle
-        <input class="form-control " type="text" placeholder="Calle principal de su casa">
-      </div>
-      <div class="mb-3">
-        <h6>Número</h6> 
-        <input class="form-control" type="text" placeholder="Número de padrón"  >
-      </div>
-      <div>
-        <h6>Esquina</h6>
-        <input class="form-control " type="text" placeholder="Una o dos esquina que rodeen su casa">
-      </div>
-     </div>
+
+<!-- direccion de envio -->
+
+      
+       <div class="row ">
+         <h5>Direccion de Envío</h5>
+         <div class="col-md-6">
+          <label for="validationCustom03" class="form-label">Calle</label>
+          <input type="text" class="form-control" id="validationCustom03" required>
+          <div class="invalid-feedback">
+            Ingrese una calle.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="validationCustom03" class="form-label">Número</label>
+          <input type="text" class="form-control" id="validationCustom03" required>
+          <div class="invalid-feedback">
+            Ingrese un número.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationCustom03" class="form-label">Esquina</label>
+          <input type="text" class="form-control" id="validationCustom03" required>
+          <div class="invalid-feedback">
+            Ingrese una esquina.
+          </div>
+        </div>
+  </div> 
+
+
+     <br>
+     <hr>
+
+<!-- costos -->
+
+     <div id="envios">
+      <h4 class="mb-3">Costos</h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Precio</h6>
+            <small class="text-muted">Unitario del producto</small>
+          </div>
+          <p>USD <span class="text-muted" id="productCostText"></span></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Costo de envío</h6>
+            <small class="text-muted">Según el tipo de envío</small>
+          </div>
+          <p>USD <span class="text-muted" id="comissionText">-</span></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total ($)</span>
+          <p>USD <strong id="totalCostText">-</strong></p>
+        </li>
+      </ul>
     </div>
      <br>
      <hr>
-     <br>
-     <div class="d-flex justify-content-end">
-  
-      <button type="button" class="btn btn-secondary  me-2">Continuar comprando</button>
-      <button type="button" class="btn btn-success ">Finalizar comprar</button>
+     
+     <!-- Boton -->
+ 
+     <div id="MetododePago">
+      <h5>Método de pago</h5>
+     </div>
+    <div class="col-sm-12">
+      <span class="pe-1 " id="seleccionar">No ha seleccionado.</span>
+  <button type="button" class="btn btn-link " data-bs-toggle="modal" data-bs-target="#exampleModal">
+   Seleccionar
+  </button>
+ <p id="formaPago" class="text-danger">
+   Debe seleccionar la forma de pago.
+ </p>
+ </div>
+
+
+ <!-- Modal -->
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>Forma de pago </strong></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div class="form-group">
+        <div class="form-check">
+          <input onclick="eleccion()"class="form-check-input Forma-de-pago" type="radio" name="Tarjeta" id="TarjetadeCrédito" >
+          <label class="form-check-label" for="Tarjeta">
+          Tarjeta de crédito
+          </label>
+        </div>
+        <hr>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Número de tarjeta.</label>
+            <input type="text" class="form-control" id="numTarjeta" placeholder="Número de tarjeta."required>
+            <div class="invalid-feedback">
+              Ingrese un número de tarjeta.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Código de seg.</label>
+            <input type="text" class="form-control" placeholder="CVV." id="codigoSeguridad" required>
+            <div class="invalid-feedback">
+              Ingrese el código de seguridad de su tarjeta.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Vencimiento (MM/AA)</label>
+            <input type="text" class="form-control" placeholder="(MM/AA)"id="vencimientoTarjeta" required>
+            <div class="invalid-feedback">
+              Ingrese la fecha de expiracion de su tarjeta.
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-grup">
+      <div class="form-check">
+        <input onclick="eleccion()" class="form-check-input Forma-de-pago " type="radio" name="Tarjeta" id="TranferenciaBancaria"  required>
+        <label class="form-check-label" for="Tarjeta">
+       Tranferencia bancaria
+        </label>
+      </div>
+      <hr>
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <label for="validationCustom03" class="form-label">Número de cuenta</label>
+          <input type="text" class="form-control"placeholder="Cuenta Bancaria" id="numCuenta" required>
+          <div class="invalid-feedback">
+            Ingrese un número de cuenta.
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">Cerrar</button>
+      </div>
     </div>
-    </div>
-  
+  </div>
+ </div>
+</form>
+
+  <div class="d-flex justify-content-end">
+     <button type="button" class="btn btn-success  me-2" > <a class="dropdown-item" href="categories.html"> Continuar comprando</a></button>
+     <button type="submit" form="formulario" id="finalizarComprar"  type="submit" class="btn btn-primary ">Finalizar comprar</button>
+   </div>
+  </div>
+
+
+
+
+
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -123,6 +261,18 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
+<!--   Alertas -->
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+    <p>¡Has comprado con éxito!</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">
+    <span id="resultSpan"></span>
+  </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

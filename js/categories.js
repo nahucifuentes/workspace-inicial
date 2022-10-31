@@ -1,3 +1,17 @@
+/* Menu desplegable del perfil */
+
+let perfil = document.getElementById("perfil");
+ perfil.innerHTML = localStorage.getItem("Usuario")
+
+ /*  Cerrar Sesion */
+
+ var BorrarDatos = document.getElementById("CloseSession");
+
+ BorrarDatos.addEventListener("click",function(){
+    window.localStorage.clear("Usuario");
+     
+ })
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";

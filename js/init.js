@@ -10,6 +10,8 @@ const EXT_TYPE = ".json";
 const Autos = "https://japceibal.github.io/emercado-api/cats_products/"+localStorage.getItem("catID")+".json";
 const Products = "https://japceibal.github.io/emercado-api/products/"+localStorage.getItem("Items")+".json";
 const ProductComment = "https://japceibal.github.io/emercado-api/products_comments/"+localStorage.getItem("Items")+".json"
+const Peugeot = "https://japceibal.github.io/emercado-api/user_cart/"+25801+".json";
+
 
 console.log()
 let showSpinner = function(){

@@ -1,11 +1,28 @@
+/* Menu deplegable del perfil */
+
+let perfil = document.getElementById("perfil");
+ perfil.innerHTML = localStorage.getItem("Usuario")
+
+ /*  Cerrar Sesion */
+
+ var BorrarDatos = document.getElementById("CloseSession");
+
+ BorrarDatos.addEventListener("click",function(){
+    window.localStorage.clear("Usuario");
+     
+ })
 
 const ORDER_ASC_BY_NAME = "ascendete";
 const ORDER_DESC_BY_NAME = "descendente";
 const ORDER_BY_PROD_COUNT = "Rel.";
 let currentCategoriesArray = [];
+/* let currentBuscadorsArray = []; */
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
+
+
+
 
 function sortCategories(criteria, array){
     let result = [];
@@ -42,6 +59,7 @@ function setCatID(id) {
 
 
 function showCategoriesList(){
+   
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.products.length; i++){
@@ -69,8 +87,55 @@ function showCategoriesList(){
         }
 
         document.getElementById("Productos").innerHTML = htmlContentToAppend;
+    };
+            }
+
+/* bucsador */
+
+document.addEventListener("DOMContentLoaded", async function(){
+    const articulos = await fetch(Autos);
+    const buscarArticulos = await articulos.json();
+    currentBuscadorsArray = buscarArticulos;
+    
+});
+document.getElementById('btnBuscar').addEventListener('click',()=>{
+    let Buscardor = ''; 
+    let buscando = document.getElementById('BuscarProducto').value;
+    if(buscando == ""){
+        return;
     }
-}
+    
+
+    for (const productos of currentBuscadorsArray.products) {
+  if(productos.name.toLowerCase().includes(buscando)||productos.description.toLowerCase().includes(buscando)){
+
+   console.log(currentBuscadorsArray)
+   Buscardor += `
+            <div onclick="setCatID(${productos.id})" class="list-group-item list-group-item-action cursor-active">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="${productos.image}" alt="${productos.description}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">${productos.name} - ${productos.currency} ${productos.cost}</h4>
+                            <small class="text-muted">${productos.soldCount} artículos</small>
+                        </div>
+                        <p class="mb-1">${productos.description}</p>
+                    </div>
+                </div>
+            </div>
+            `
+        
+
+        document.getElementById("Productos").innerHTML = Buscardor;
+                 };
+                }
+            }
+            
+); 
+
+/* fin del buscaror */
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;

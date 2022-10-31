@@ -28,7 +28,10 @@ let perfil = document.getElementById("perfil");
      
  })
 
-/*  CerrarSesion.addEventListener('click',function(e){
-    localStorage.removeItem("Usuario")
+
+
+
+/*  BorrarDatos.addEventListener("click",function(){
+ window.localStorage.removeItem("Usuario")
 });
  */
