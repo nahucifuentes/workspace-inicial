@@ -10,8 +10,10 @@ function showAlertpassword(){
 const boton = document.getElementById ("boton");
 let password = document.getElementById("Contraseña");
 let email = document.getElementById("Nombre");
+let FormLogin = document.getElementById("FormLogin");
 
-boton.addEventListener("click", ()=> {
+//validacion de contraseñas y email vacio
+/* boton.addEventListener("click", ()=> {
     if (email.value == "" ){
         showAlertemail();
     }
@@ -23,6 +25,19 @@ if(email.value != "" && password.value !="" ) {
     window.location.href = "index.html";
 }
 })
+ */
 
 
-
+//validacion formulario (para que valide el mail con @)
+boton.addEventListener("click", ()=> {
+    if (!FormLogin.checkValidity() ) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    FormLogin.classList.add('was-validated')
+ if(FormLogin.checkValidity()){
+     window.location.href = "index.html";   
+    localStorage.setItem("Usuario",email.value)
+}
+  }) 
+ 

@@ -109,7 +109,7 @@ document.getElementById('btnBuscar').addEventListener('click',()=>{
     for (const productos of currentBuscadorsArray.products) {
   if(productos.name.toLowerCase().includes(buscando)||productos.description.toLowerCase().includes(buscando)){
 
-   console.log(currentBuscadorsArray)
+   
    Buscardor += `
             <div onclick="setCatID(${productos.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
